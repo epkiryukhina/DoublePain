@@ -1,0 +1,12 @@
+﻿@model DoublePain.Service
+
+<h2>Добавление услуги</h2>
+@using (Html.BeginForm())
+{
+    <p>Клиент: @Html.Label(((Client)TempData["User"]).Name)</p>
+    <p>Работник: @Html.DropDownList("Employee", (IEnumerable<SelectListItem>)ViewData["Employees"])</p>
+    <p>Дата: <input type="date" name="Date"> @Html.ValidationMessage("Date")</p>
+    <p>Количество часов: @Html.TextBox("NumberOfHours", 0) @Html.ValidationMessage("NumberOfHours")</p>
+    <p>Количество людей: @Html.TextBox("NumberOfPeople", 0) @Html.ValidationMessage("NumberOfPeople")</p>
+    <p><input type="submit" value="Сохранить"> </p>
+}

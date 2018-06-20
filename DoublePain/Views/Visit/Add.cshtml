@@ -1,0 +1,13 @@
+﻿@model DoublePain.Visit
+
+<h2>Добавление визита</h2>
+@using (Html.BeginForm())
+{
+    <p>Клиент: @Html.Label(((Client)TempData["User"]).Name)</p>
+    <p>Дата приезда: <input type="date" name="FirstDate"> @Html.ValidationMessage("Date")</p>
+    <p>Дата отъезда: <input type="date" name="SecondDate"> @Html.ValidationMessage("Date")</p>
+    <p>Номер: @Html.DropDownList("Room", (IEnumerable<SelectListItem>)ViewData["Rooms"])</p>
+    <p><input type="submit" value="Сохранить"> </p>
+}
+
+

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="1c9cb975a2944e6493a7e1287d19246a" Name="Diagram1" ZoomLevel="50" >
+        <EntityTypeShape EntityType="Modelll.Client" Width="1.5" PointX="5.375" PointY="0.75" />
+        <EntityTypeShape EntityType="Modelll.Employee" Width="1.5" PointX="7.125" PointY="0.75" />
+        <EntityTypeShape EntityType="Modelll.Visit" Width="1.5" PointX="3.625" PointY="3.875" />
+        <EntityTypeShape EntityType="Modelll.Service" Width="1.5" PointX="6.125" PointY="4.375" />
+        <EntityTypeShape EntityType="Modelll.TypeOfRoom" Width="1.5" PointX="2.875" PointY="0.75" />
+        <EntityTypeShape EntityType="Modelll.Room" Width="1.5" PointX="1.5" PointY="3.375" />
+        <EntityTypeShape EntityType="Modelll.Job" Width="1.5" PointX="9.625" PointY="1.5" />
+        <EntityTypeShape EntityType="Modelll.TypeOfService" Width="1.5" PointX="8.375" PointY="4.25" />
+        <EntityTypeShape EntityType="Modelll.TypeOfPrice" Width="1.5" PointX="10.625" PointY="3.5" />
+        <AssociationConnector Association="Modelll.TypeOfRoomRoom" />
+        <AssociationConnector Association="Modelll.RoomVisit" />
+        <AssociationConnector Association="Modelll.ClientVisit" />
+        <AssociationConnector Association="Modelll.ClientService" />
+        <AssociationConnector Association="Modelll.EmployeeService" />
+        <AssociationConnector Association="Modelll.TypeOfServiceEmployee" />
+        <AssociationConnector Association="Modelll.JobEmployee" />
+        <AssociationConnector Association="Modelll.TypeOfPriceTypeOfService" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

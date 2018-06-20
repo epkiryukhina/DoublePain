@@ -1,0 +1,8 @@
+﻿@model DoublePain.TypeOfPrice
+
+<h2>Добавление типа оплаты</h2>
+@using (Html.BeginForm())
+{
+    <p>Тип: @Html.TextBox("Type") @Html.ValidationMessage("Type")</p>
+    <p><input type="submit" value="Сохранить"> </p>
+}

@@ -1,0 +1,10 @@
+﻿@model DoublePain.TypeOfService
+
+<h2>Добавление типа услуги</h2>
+@using (Html.BeginForm())
+{
+    <p>Название: @Html.TextBox("Name")</p>
+    <p>Цена: @Html.TextBox("Price") @Html.ValidationMessage("Price")</p>
+    <p>Тип оплаты: @Html.DropDownList("TypeOfPrice", (IEnumerable<SelectListItem>)ViewData["TypeOfPrices"])</p>
+    <p><input type="submit" value="Сохранить"> </p>
+}

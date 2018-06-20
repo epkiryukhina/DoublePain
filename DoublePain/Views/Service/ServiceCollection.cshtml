@@ -1,0 +1,26 @@
+﻿@model DoublePain.Service
+
+<h2>Список услуг</h2>
+
+<table>
+    <tr>
+        <td>Клиент</td>
+        <td>Работник</td>
+        <td>Услуга</td>
+        <td>Дата</td>
+        <td>Количество часов</td>
+        <td>Количество людей</td>
+    </tr>
+    @foreach (Service c in (IEnumerable<Service>)ViewData["Services"])
+    {
+        <tr>
+            <td>@c.Client.Name</td>
+            <td>@c.Employee.Name</td>
+            <td>@c.Employee.TypeOfService.Name</td>
+            <td>@c.Date</td>
+            <td>@c.NumberOfHours</td>
+            <td>@c.NumberOfPeople</td>
+            <td>@Html.ActionLink("Открыть", "ServiceInfo", new { id = c.Id })</td>
+        </tr>
+    }
+</table>

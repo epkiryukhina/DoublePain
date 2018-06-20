@@ -15,8 +15,52 @@
 }
 else
 {
-    <ul class="nav navbar-nav navbar-right">
-        <li>@Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
-        <li>@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
-    </ul>
+    var a = TempData["User"];
+    TempData["User"] = a;
+    if (a != null)
+    {
+        string str = "";
+        string name = "";
+        if (a is Client)
+        {
+            name = ((Client)a).Name;
+            str = "/ClientAccount/Load/";
+        }
+        else
+        {
+            name = ((Employee)a).Name;
+            str = "/EmployeeAccount/Load/";
+        }
+
+
+        <ul class="navbar-collapse collapse navbar-right">
+            <a href=@str>@name</a>
+            <div class="btn-group">
+                <a href ="#" class="btn btn-brown" data-toggle="dropdown" aria-expanded="true">
+                     Настройки
+                    <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu">
+                    @if (a is Client)
+                    {
+                        <li>@Html.ActionLink("Редактировать", "Edit", "Client", routeValues: null, htmlAttributes: new { @style = "font-size:18px" })</li>
+                        <li>@Html.ActionLink("Удалить", "Delete", "Client", new { id = ((Client)a).Id }, htmlAttributes: new { onclick = "return confirm('Вы уверены?');", @style = "font-size:18px" })</li>
+                    }
+                    else
+                    {
+                        <li>@Html.ActionLink("Редактировать", "Edit", "Employee", routeValues: null, htmlAttributes: new { @style = "font-size:18px" })</li>
+                        <li>@Html.ActionLink("Удалить", "Delete", "Employee", new { id = ((Employee)a).Id }, htmlAttributes: new { onclick = "return confirm('Вы уверены?');", @style = "font-size:18px" })</li>
+                    }
+                    <li>@Html.ActionLink("Выйти", "Exit", "LogIn", routeValues: null, htmlAttributes: new { @style = "font-size:18px" })</li>
+                </ul>
+            </div>
+            </ul>
+    }
+    else
+    {
+            <ul class="nav navbar-nav navbar-right">
+                <li>@Html.ActionLink("Зарегистрироваться", "Add", "Client", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
+                <li>@Html.ActionLink("Войти", "LogIn", "LogIn", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+            </ul>
+    }
 }

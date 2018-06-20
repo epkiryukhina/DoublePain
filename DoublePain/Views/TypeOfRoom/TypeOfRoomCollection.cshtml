@@ -1,0 +1,22 @@
+﻿@model DoublePain.TypeOfRoom
+
+<h2>Список типов номеров</h2>
+@Html.ActionLink("Добавить тип номера", "Add")
+<br />
+
+<table>
+    <tr>
+        <td>Тип</td>
+        <td>Цена</td>
+        <td>Вместимость</td>
+    </tr>
+    @foreach (TypeOfRoom c in (IEnumerable<TypeOfRoom>)ViewData["TypeOfRooms"])
+    {
+        <tr>
+            <td>@c.Type</td>
+            <td>@c.Price</td>
+            <td>@c.Capacity</td>
+            <td>@Html.ActionLink("Открыть", "TypeOfRoom", new { id = c.Id })</td>
+        </tr>
+    }
+</table>

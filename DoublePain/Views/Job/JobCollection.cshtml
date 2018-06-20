@@ -1,0 +1,23 @@
+﻿@model DoublePain.Job
+
+<h2>Список должностей</h2>
+
+@Html.ActionLink("Добавить должность", "Add")
+<br/>
+
+<table>
+    <tr>
+        <td>Название</td>
+    </tr>
+    @foreach (Job c in (IEnumerable<Job>)ViewData["Jobs"])
+    {
+        <tr>
+            <td>@c.JobName</td>
+            <td>@Html.ActionLink("Открыть", "Job", new { id = c.Id })</td>
+        </tr>
+    }
+</table>
+
+
+
+

@@ -1,0 +1,45 @@
+﻿@model DoublePain.Client
+
+<h2>Описание клиента</h2>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.DateBirth)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.DateBirth.Date)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Sex)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Sex)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Passport)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Passport)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Visit)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Visit.Count)
+        </dd>
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Редактировать", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Удалить", "Delete", new { id = Model.Id }, new { onclick = "return confirm('Вы уверены?');" }) |
+    @Html.ActionLink("Назад", "ClientCollection")
+</p>
+
+

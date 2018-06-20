@@ -1,4 +1,6 @@
-﻿body {
+﻿body {  
+    background-image: url("../1.png");
+    background-color: teal;
     padding-top: 50px;
     padding-bottom: 20px;
 }
@@ -20,5 +22,5 @@
 input,
 select,
 textarea {
-    max-width: 280px;
+    max-width: 350px;
 }

@@ -1,0 +1,20 @@
+﻿@model DoublePain.Job
+
+<h2>Описание должности</h2>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.JobName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.JobName)
+        </dd>
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Удалить", "Delete", new { id = Model.Id }, new { onclick = "return confirm('Вы уверены?');" }) |
+    @Html.ActionLink("Назад", "JobCollection")
+</p>
+
+

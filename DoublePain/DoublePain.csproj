@@ -44,6 +44,34 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.AI.Agent.Intercept, Version=2.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.Agent.Intercept.2.0.6\lib\net45\Microsoft.AI.Agent.Intercept.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.DependencyCollector, Version=2.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.DependencyCollector.2.2.0\lib\net45\Microsoft.AI.DependencyCollector.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.PerfCounterCollector, Version=2.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.PerfCounterCollector.2.2.0\lib\net45\Microsoft.AI.PerfCounterCollector.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.ServerTelemetryChannel, Version=2.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.2.2.0\lib\net45\Microsoft.AI.ServerTelemetryChannel.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.Web, Version=2.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.Web.2.2.0\lib\net45\Microsoft.AI.Web.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.WindowsServer, Version=2.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.2.2.0\lib\net45\Microsoft.AI.WindowsServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.ApplicationInsights, Version=2.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.2.2.0\lib\net45\Microsoft.ApplicationInsights.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
       <Private>True</Private>
@@ -52,6 +80,8 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -167,17 +197,81 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Client.cs">
+      <DependentUpon>Modelll.tt</DependentUpon>
+    </Compile>
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\ClientAccountController.cs" />
+    <Compile Include="Controllers\ClientController.cs" />
+    <Compile Include="Controllers\EmployeeAccountController.cs" />
+    <Compile Include="Controllers\EmployeeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\JobController.cs" />
+    <Compile Include="Controllers\LogInController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\RoomController.cs" />
+    <Compile Include="Controllers\ServiceController.cs" />
+    <Compile Include="Controllers\TypeOfPriceController.cs" />
+    <Compile Include="Controllers\TypeOfRoomController.cs" />
+    <Compile Include="Controllers\TypeOfServiceController.cs" />
+    <Compile Include="Controllers\VisitController.cs" />
+    <Compile Include="Employee.cs">
+      <DependentUpon>Modelll.tt</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Job.cs">
+      <DependentUpon>Modelll.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelll.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Modelll.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelll.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Modelll.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelll.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Modelll.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\ClientRepository.cs" />
+    <Compile Include="Models\DataManager.cs" />
+    <Compile Include="Models\EmployeeRepository.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\JobRepository.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\RoomRepository.cs" />
+    <Compile Include="Models\ServiceRepository.cs" />
+    <Compile Include="Models\TypeOfPriceRepository.cs" />
+    <Compile Include="Models\TypeOfRoomRepository.cs" />
+    <Compile Include="Models\TypeOfServiceRepository.cs" />
+    <Compile Include="Models\VisitRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Room.cs">
+      <DependentUpon>Modelll.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Service.cs">
+      <DependentUpon>Modelll.tt</DependentUpon>
+    </Compile>
     <Compile Include="Startup.cs" />
+    <Compile Include="TypeOfPrice.cs">
+      <DependentUpon>Modelll.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TypeOfRoom.cs">
+      <DependentUpon>Modelll.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TypeOfService.cs">
+      <DependentUpon>Modelll.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Visit.cs">
+      <DependentUpon>Modelll.tt</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
@@ -186,8 +280,29 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Modelll.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Modelll.Context.cs</LastGenOutput>
+      <DependentUpon>Modelll.edmx</DependentUpon>
+    </Content>
+    <Content Include="Modelll.edmx.sql" />
+    <Content Include="Modelll.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Modelll.cs</LastGenOutput>
+      <DependentUpon>Modelll.edmx</DependentUpon>
+    </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="ApplicationInsights.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <EntityDeploy Include="Modelll.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Modelll.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Modelll.edmx.diagram">
+      <DependentUpon>Modelll.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -211,8 +326,6 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
     <Content Include="Views\Account\ConfirmEmail.cshtml" />
@@ -234,6 +347,44 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Client\ClientCollection.cshtml" />
+    <Content Include="Views\Client\Client.cshtml" />
+    <Content Include="Views\Visit\VisitCollection.cshtml" />
+    <Content Include="Views\Visit\Visit.cshtml" />
+    <Content Include="Views\Visit\Add.cshtml" />
+    <Content Include="Views\Employee\EmployeeCollection.cshtml" />
+    <Content Include="Views\Employee\Employee.cshtml" />
+    <Content Include="Views\Job\JobCollection.cshtml" />
+    <Content Include="Views\Job\Job.cshtml" />
+    <Content Include="Views\Job\Add.cshtml" />
+    <Content Include="Views\Room\RoomCollection.cshtml" />
+    <Content Include="Views\Room\Room.cshtml" />
+    <Content Include="Views\Room\Add.cshtml" />
+    <Content Include="Views\TypeOfRoom\TypeOfRoomCollection.cshtml" />
+    <Content Include="Views\TypeOfRoom\TypeOfRoom.cshtml" />
+    <Content Include="Views\TypeOfRoom\Add.cshtml" />
+    <Content Include="Views\Service\ServiceCollection.cshtml" />
+    <Content Include="Views\Service\Service.cshtml" />
+    <Content Include="Views\Service\Add.cshtml" />
+    <Content Include="Views\TypeOfPrice\TypeOfPriceCollection.cshtml" />
+    <Content Include="Views\TypeOfPrice\TypeOfPrice.cshtml" />
+    <Content Include="Views\TypeOfPrice\Add.cshtml" />
+    <Content Include="Views\TypeOfService\TypeOfServiceCollection.cshtml" />
+    <Content Include="Views\TypeOfService\TypeOfService.cshtml" />
+    <Content Include="Views\TypeOfService\Add.cshtml" />
+    <Content Include="Views\Client\Add.cshtml" />
+    <Content Include="Views\Client\Edit.cshtml" />
+    <Content Include="Views\Employee\Add.cshtml" />
+    <Content Include="Views\Employee\Edit.cshtml" />
+    <Content Include="Views\ClientAccount\Load.cshtml" />
+    <Content Include="Views\ClientAccount\ShowVisits.cshtml" />
+    <Content Include="Views\EmployeeAccount\Load.cshtml" />
+    <Content Include="Views\Client\ClientInfo.cshtml" />
+    <Content Include="Views\Employee\EmployeeInfo.cshtml" />
+    <Content Include="Views\LogIn\LogIn.cshtml" />
+    <Content Include="Views\Visit\VisitInfo.cshtml" />
+    <Content Include="Views\Service\ServiceInfo.cshtml" />
+    <Content Include="Views\ClientAccount\ShowServices.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -245,6 +396,9 @@
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

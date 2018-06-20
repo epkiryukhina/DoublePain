@@ -1,0 +1,9 @@
+﻿@model DoublePain.Room
+
+<h2>Добавление номера</h2>
+@using (Html.BeginForm())
+{
+    <p>Номер: @Html.TextBox("Number") @Html.ValidationMessage("Number")</p>
+    <p>Тип: @Html.DropDownList("TypeOfRoom", (IEnumerable<SelectListItem>)ViewData["TypeOfRooms"]) @Html.ValidationMessage("TypeOfRoom")</p>
+    <p><input type="submit" value="Сохранить"> </p>
+}

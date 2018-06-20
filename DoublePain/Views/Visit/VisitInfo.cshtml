@@ -1,0 +1,44 @@
+﻿@model DoublePain.Visit
+
+<h2>Описание визита</h2>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Client)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Client.Name)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.FirstDate)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.FirstDate)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.SecondDate)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.SecondDate)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Room)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Room.Number)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Room.TypeOfRoom)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Room.TypeOfRoom.Type)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    <a href="/ClientAccount/Load/">Назад</a>
+</p>
+
+

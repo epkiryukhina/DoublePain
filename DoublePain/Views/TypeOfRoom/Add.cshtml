@@ -1,0 +1,10 @@
+﻿@model DoublePain.TypeOfRoom
+
+<h2>Добавление типа номера</h2>
+@using (Html.BeginForm())
+{
+    <p>Тип: @Html.TextBox("Type") @Html.ValidationMessage("Type")</p>
+    <p>Цена: @Html.TextBox("Price") @Html.ValidationMessage("Price")</p>
+    <p>Вместимость: @Html.TextBox("Capacity") @Html.ValidationMessage("Capacity")</p>
+    <p><input type="submit" value="Сохранить"> </p>
+}

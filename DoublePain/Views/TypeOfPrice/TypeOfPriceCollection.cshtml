@@ -1,0 +1,18 @@
+﻿@model DoublePain.TypeOfPrice
+
+<h2>Список типов оплаты</h2>
+@Html.ActionLink("Добавить типа оплаты", "Add")
+<br />
+
+<table>
+    <tr>
+        <td>Тип</td>
+    </tr>
+    @foreach (TypeOfPrice c in (IEnumerable<TypeOfPrice>)ViewData["TypeOfPrices"])
+    {
+        <tr>
+            <td>@c.Type</td>
+            <td>@Html.ActionLink("Открыть", "TypeOfPrice", new { id = c.Id })</td>
+        </tr>
+    }
+</table>

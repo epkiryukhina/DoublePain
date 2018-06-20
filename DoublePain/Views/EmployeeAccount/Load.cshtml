@@ -1,0 +1,42 @@
+﻿@using DoublePain.Models
+@using DoublePain.Controllers
+@*@model DoublePain.Employee*@
+
+<h2>Ваш профиль</h2>
+
+
+<div class="form-horizontal">
+    <div class="form-group">
+        <div>
+            <row>
+                @Html.AntiForgeryToken()
+                <div class="col-md-6">
+                    <h3>Клиенты</h3>
+                    <select id="list2" size="10" multiple="multiple" onchange="location.href=this.value">
+                        @foreach (var a in (IEnumerable<Client>)ViewData["Clients"])
+                        {
+                            <option value="/Client/ClientInfo/@a.Id">@a.Name @a.Passport</option>;
+                        }
+                    </select>
+                </div>
+                <div class="col-md-6">
+                    <h3>Сотрудники</h3>
+                    <select id="list2" size="10" multiple="multiple" onchange="location.href=this.value">
+                        @foreach (var a in (IEnumerable<Employee>)ViewData["Employees"])
+                        {
+                            <option value="/Employee/EmployeeInfo/@a.Id">@a.Name @a.Passport</option>;
+                        }
+                    </select>
+                </div>
+            </row>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+

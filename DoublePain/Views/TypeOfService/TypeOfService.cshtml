@@ -1,0 +1,30 @@
+﻿@model  DoublePain.TypeOfService
+
+<h2>Описание типа услуги</h2>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Price)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Price)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.TypeOfPrice)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.TypeOfPrice.Type)
+        </dd>
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Удалить", "Delete", new { id = Model.Id }, new { onclick = "return confirm('Вы уверены?');" }) |
+    @Html.ActionLink("Назад", "TypeOfServiceCollection")
+</p>

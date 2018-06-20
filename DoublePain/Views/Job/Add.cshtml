@@ -1,0 +1,8 @@
+﻿@model DoublePain.Job
+
+<h2>Добавление должности</h2>
+@using (Html.BeginForm())
+{
+    <p>Название: @Html.TextBox("name") @Html.ValidationMessage("name")</p>
+    <p><input type="submit" value="Сохранить"> </p>
+}

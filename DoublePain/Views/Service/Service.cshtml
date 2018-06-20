@@ -1,0 +1,42 @@
+﻿@model DoublePain.Service
+
+<h2>Описание услуги</h2>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Client)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Client.Name)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Employee)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Employee.Name)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Date)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Date)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.NumberOfHours)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.NumberOfHours)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.NumberOfPeople)
+        </dt>   
+        <dd>
+            @Html.DisplayFor(model => model.NumberOfPeople)
+        </dd>
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Удалить", "Delete", new { id = Model.Id }, new { onclick = "return confirm('Вы уверены?');" }) |
+    <a href="/ClientAccount/Load/">Назад</a>
+</p>

@@ -1,0 +1,25 @@
+﻿@model DoublePain.Visit
+
+<h2>Список визитов</h2>
+
+<table>
+    <tr>
+        <td>ФИО клиента</td>
+        <td>Дата начала</td>
+        <td>Дата конца</td>
+        <td>Номер комнаты</td>
+    </tr>
+    @foreach (Visit c in (IEnumerable<Visit>)ViewData["Visits"])
+    {
+        <tr>
+            <td>@c.Client.Name</td>
+            <td>@c.FirstDate</td>
+            <td>@c.SecondDate</td>
+            <td>@c.Room.Number</td>
+            <td>@Html.ActionLink("Открыть", "VisitInfo", new { id = c.Id })</td>
+        </tr>
+    }
+</table>
+
+
+

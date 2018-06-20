@@ -1,0 +1,23 @@
+﻿@model DoublePain.Client
+
+<h2>Список клиентов</h2>
+
+<table>
+    <tr>
+        <td>ФИО</td>
+        <td>Дата Рождения</td>
+        <td>Пол</td>
+        <td>Паспорт</td>
+    </tr>
+    @foreach (Client c in (IEnumerable<Client>)ViewData["Clients"])
+    {
+        <tr>
+            <td>@c.Name</td>
+            <td>@c.DateBirth</td>
+            <td>@c.Sex</td>
+            <td>@c.Passport</td>
+            <td>@Html.ActionLink("Открыть", "ClientInfo", new { id = c.Id })</td>
+        </tr>
+    }
+</table>
+

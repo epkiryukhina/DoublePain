@@ -17,14 +17,32 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("Home Hotel", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                </ul>
+
+                @{ var a = TempData["User"];}
+                @{TempData["User"] = a; }
+                @if (a is Employee)
+                    {
+                <div class="btn-group">
+                    <a href="#" class="btn btn-brown" data-toggle="dropdown" aria-expanded="false">
+                        Редактирование
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li>@Html.ActionLink("Клиенты", "ClientCollection", "Client", routeValues: null, htmlAttributes: new { @style = "font-size:18px" })</li>
+                        <li>@Html.ActionLink("Сотрудники", "EmployeeCollection", "Employee", routeValues: null, htmlAttributes: new { @style = "font-size:18px" })</li>
+                        <li>@Html.ActionLink("Должности", "JobCollection", "Job", routeValues: null, htmlAttributes: new { @style = "font-size:18px" })</li>
+                        <li>@Html.ActionLink("Типы услуг", "TypeOfServiceCollection", "TypeOfService", routeValues: null, htmlAttributes: new { @style = "font-size:18px" })</li>
+                        <li>@Html.ActionLink("Типы оплат", "TypeOfPriceCollection", "TypeOfPrice", routeValues: null, htmlAttributes: new { @style = "font-size:18px" })</li>
+                        <li>@Html.ActionLink("Услуги", "ServiceCollection", "Service", routeValues: null, htmlAttributes: new { @style = "font-size:18px" })</li>                      
+                        <li>@Html.ActionLink("Номера", "RoomCollection", "Room", routeValues: null, htmlAttributes: new { @style = "font-size:18px" })</li>
+                        <li>@Html.ActionLink("Типы номеров", "TypeOfRoomCollection", "TypeOfRoom", routeValues: null, htmlAttributes: new { @style = "font-size:18px" })</li>                      
+                        <li>@Html.ActionLink("Визиты", "VisitCollection", "Visit", routeValues: null, htmlAttributes: new { @style = "font-size:18px" })</li>
+                    </ul>
+                </div>
+                }
                 @Html.Partial("_LoginPartial")
             </div>
         </div>
@@ -33,7 +51,7 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            <p>Высшая школа экономики, Пермь, 2018</p>
         </footer>
     </div>
 

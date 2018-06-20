@@ -1,0 +1,62 @@
+﻿@using DoublePain.Models
+@using DoublePain.Controllers
+@model DoublePain.Client
+
+<h2>Ваш профиль</h2>
+
+
+<div class="form-horizontal">
+    <div class="form-group">
+        <div>
+            <row>
+                <form action="/ClientAccount/ShowVisits" method="post">
+                    @Html.AntiForgeryToken()
+                    <div class="col-md-6">
+                        <h3>Номера</h3>
+                        <h4>Критерии поиска</h4>
+                        <p>Дата приезда: <input type="date" name="FirstDate"> @Html.ValidationMessage("FirstDate")</p>
+                        <p>Дата отъезда: <input type="date" name="SecondDate"></p>
+                        <p>Тип номера: @Html.DropDownList("TypeOfRoom", (IEnumerable<SelectListItem>)ViewData["TypeOfRooms"])</p>
+                        <p>Вместимость: @Html.TextBox("NumberOfPeople", 0) @Html.ValidationMessage("NumberOfPeople")</p>
+                        <p>Минимальная цена: @Html.TextBox("MinPrice1", 0) @Html.ValidationMessage("MinPrice1")</p>
+                        <p>Максимальная цена: @Html.TextBox("MaxPrice1", 0) @Html.ValidationMessage("MaxPrice1")</p>
+                        <p><input type="submit" id="Visits" value="Найти"> </p>
+                        <div class="col-md-6">
+                            <h4>Выши брони номеров</h4>
+                            <select id="list2" size="10" multiple="multiple" onchange="location.href=this.value">
+                                @foreach (var a in (IEnumerable<Visit>)ViewData["YourVisits"])
+                                {
+                                    <option value="/Visit/Visit/@a.Id">@a.FirstDate.Day.@a.FirstDate.Month.@a.FirstDate.Year-@a.SecondDate.Day.@a.SecondDate.Month.@a.SecondDate.Year Номер: @a.Room.Number</option>;
+                                }
+                            </select>
+                            <p><input type="button" value="Добавить бронь номера" onclick="window.location='/Visit/Add'"></p>
+                        </div>
+                    </div>
+                </form>
+                <form action="/ClientAccount/ShowServices/" method="post">
+                    @Html.AntiForgeryToken()
+                    <div class="col-md-6">
+                        <h3>Услуги</h3>
+                        <h4>Критерии поиска</h4>
+                        <p>Дата: <input type="date" name="Date"> @Html.ValidationMessage("Date")</p>
+                        <p>Тип услуги: @Html.DropDownList("TypeOfService", (IEnumerable<SelectListItem>)ViewData["TypeOfServices"])</p>
+                        <p>Тип оплаты: @Html.DropDownList("TypeOfPrice", (IEnumerable<SelectListItem>)ViewData["TypeOfPrices"])</p>
+                        <p>Минимальная цена: @Html.TextBox("MinPrice", 0) @Html.ValidationMessage("MinPrice")</p>
+                        <p>Максимальная цена: @Html.TextBox("MaxPrice", 0) @Html.ValidationMessage("MaxPrice")</p>
+                        <p><input type="submit" Id="Services" value="Найти"> </p>
+                        <div class="col-md-6">
+                            <h4>Выши брони услуг</h4>
+                            <select id="list2" size="10" multiple="multiple" onchange="location.href=this.value">
+                                @foreach (var a in (IEnumerable<Service>)ViewData["YourServices"])
+                                {
+                                    <option value="/Service/Service/@a.Id">@a.Date.Day.@a.Date.Month.@a.Date.Year @a.Employee.Name @a.Employee.TypeOfService.Name @a.Employee.TypeOfService.Price</option>;
+                                }
+                            </select>
+                            <p><input type="button" value="Добавить бронь услуги" onclick="window.location='/Service/Add'"></p>
+                        </div>
+                    </div>
+                </form>
+            </row>
+        </div>
+    </div>
+</div>

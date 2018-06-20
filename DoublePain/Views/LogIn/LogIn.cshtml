@@ -1,0 +1,10 @@
+﻿@using DoublePain.Models
+
+<h2>Вход в систему</h2>
+@using (Html.BeginForm())
+{
+    <p>Логин: @Html.TextBox("Login") @Html.ValidationMessage("Login")</p>
+    <p>Пароль: @Html.TextBox("Password") @Html.ValidationMessage("Password")</p>
+    <p><input type="submit" value="Войти"> </p>
+    <a href="/Client/Add/">Зарегистрироваться</a>
+}

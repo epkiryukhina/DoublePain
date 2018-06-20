@@ -1,0 +1,13 @@
+﻿@using DoublePain.Models
+@model DoublePain.Client
+
+<h2>Регистрация пользователя</h2>
+@using (Html.BeginForm())
+{
+    <p>ФИО: @Html.TextBox("Name") @Html.ValidationMessage("Name")</p>
+    <p>Дата рождения: <input type="date" name="Date"> @Html.ValidationMessage("Date")</p>
+    <p>Пол: @Html.DropDownList("Sex", new SelectList(Enum.GetValues(typeof(Sexes))), "Не выбран") @Html.ValidationMessage("Sex")</p>
+    <p>Паспорт (логин): @Html.TextBox("Passport") @Html.ValidationMessage("Passport")</p>
+    <p>Пароль: @Html.TextBox("Password") @Html.ValidationMessage("Password")</p>
+    <p><input type="submit" value="Сохранить"> </p>
+}

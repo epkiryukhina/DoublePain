@@ -1,0 +1,582 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Modelll.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="ModelllStoreContainer">
+    <EntitySet Name="VisitSet" EntityType="Modelll.Store.VisitSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ServiceSet" EntityType="Modelll.Store.ServiceSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="TypeOfRoomSet" EntityType="Modelll.Store.TypeOfRoomSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="RoomSet" EntityType="Modelll.Store.RoomSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="JobSet" EntityType="Modelll.Store.JobSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="TypeOfServiceSet" EntityType="Modelll.Store.TypeOfServiceSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="TypeOfPriceSet" EntityType="Modelll.Store.TypeOfPriceSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ClientSet" EntityType="Modelll.Store.ClientSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="EmployeeSet" EntityType="Modelll.Store.EmployeeSet" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="TypeOfRoomRoom" Association="Modelll.Store.TypeOfRoomRoom">
+      <End Role="TypeOfRoom" EntitySet="TypeOfRoomSet" />
+      <End Role="Room" EntitySet="RoomSet" />
+    </AssociationSet>
+    <AssociationSet Name="RoomVisit" Association="Modelll.Store.RoomVisit">
+      <End Role="Room" EntitySet="RoomSet" />
+      <End Role="Visit" EntitySet="VisitSet" />
+    </AssociationSet>
+    <AssociationSet Name="ClientVisit" Association="Modelll.Store.ClientVisit">
+      <End Role="Client" EntitySet="ClientSet" />
+      <End Role="Visit" EntitySet="VisitSet" />
+    </AssociationSet>
+    <AssociationSet Name="ClientService" Association="Modelll.Store.ClientService">
+      <End Role="Client" EntitySet="ClientSet" />
+      <End Role="Service" EntitySet="ServiceSet" />
+    </AssociationSet>
+    <AssociationSet Name="EmployeeService" Association="Modelll.Store.EmployeeService">
+      <End Role="Employee" EntitySet="EmployeeSet" />
+      <End Role="Service" EntitySet="ServiceSet" />
+    </AssociationSet>
+    <AssociationSet Name="TypeOfServiceEmployee" Association="Modelll.Store.TypeOfServiceEmployee">
+      <End Role="TypeOfService" EntitySet="TypeOfServiceSet" />
+      <End Role="Employee" EntitySet="EmployeeSet" />
+    </AssociationSet>
+    <AssociationSet Name="JobEmployee" Association="Modelll.Store.JobEmployee">
+      <End Role="Job" EntitySet="JobSet" />
+      <End Role="Employee" EntitySet="EmployeeSet" />
+    </AssociationSet>
+    <AssociationSet Name="TypeOfPriceTypeOfService" Association="Modelll.Store.TypeOfPriceTypeOfService">
+      <End Role="TypeOfPrice" EntitySet="TypeOfPriceSet" />
+      <End Role="TypeOfService" EntitySet="TypeOfServiceSet" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="VisitSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FirstDate" Type="datetime" Nullable="false" />
+    <Property Name="SecondDate" Type="datetime" Nullable="false" />
+    <Property Name="Room_Id" Type="int" Nullable="false" />
+    <Property Name="Client_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ServiceSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Date" Type="datetime" Nullable="false" />
+    <Property Name="NumberOfPeople" Type="int" Nullable="false" />
+    <Property Name="NumberOfHours" Type="int" Nullable="false" />
+    <Property Name="Client_Id" Type="int" Nullable="false" />
+    <Property Name="Employee_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TypeOfRoomSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Type" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Capacity" Type="int" Nullable="false" />
+    <Property Name="Price" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="RoomSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Number" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="TypeOfRoom_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="JobSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="JobName" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TypeOfServiceSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Price" Type="int" Nullable="false" />
+    <Property Name="TypeOfPrice_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TypeOfPriceSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Type" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ClientSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="DateBirth" Type="datetime" Nullable="false" />
+    <Property Name="Sex" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Password" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Passport" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="EmployeeSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="DateBirth" Type="datetime" Nullable="false" />
+    <Property Name="Sex" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Password" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Passport" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="TypeOfService_Id" Type="int" Nullable="false" />
+    <Property Name="Job_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="TypeOfRoomRoom">
+    <End Role="TypeOfRoom" Type="Modelll.Store.TypeOfRoomSet" Multiplicity="1" />
+    <End Role="Room" Type="Modelll.Store.RoomSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TypeOfRoom">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Room">
+        <PropertyRef Name="TypeOfRoom_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="RoomVisit">
+    <End Role="Room" Type="Modelll.Store.RoomSet" Multiplicity="1" />
+    <End Role="Visit" Type="Modelll.Store.VisitSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Room">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Visit">
+        <PropertyRef Name="Room_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ClientVisit">
+    <End Role="Client" Type="Modelll.Store.ClientSet" Multiplicity="1" />
+    <End Role="Visit" Type="Modelll.Store.VisitSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Client">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Visit">
+        <PropertyRef Name="Client_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ClientService">
+    <End Role="Client" Type="Modelll.Store.ClientSet" Multiplicity="1" />
+    <End Role="Service" Type="Modelll.Store.ServiceSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Client">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Service">
+        <PropertyRef Name="Client_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="EmployeeService">
+    <End Role="Employee" Type="Modelll.Store.EmployeeSet" Multiplicity="1" />
+    <End Role="Service" Type="Modelll.Store.ServiceSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Service">
+        <PropertyRef Name="Employee_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="TypeOfServiceEmployee">
+    <End Role="TypeOfService" Type="Modelll.Store.TypeOfServiceSet" Multiplicity="1" />
+    <End Role="Employee" Type="Modelll.Store.EmployeeSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TypeOfService">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Employee">
+        <PropertyRef Name="TypeOfService_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="JobEmployee">
+    <End Role="Job" Type="Modelll.Store.JobSet" Multiplicity="1" />
+    <End Role="Employee" Type="Modelll.Store.EmployeeSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Job">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Employee">
+        <PropertyRef Name="Job_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="TypeOfPriceTypeOfService">
+    <End Role="TypeOfPrice" Type="Modelll.Store.TypeOfPriceSet" Multiplicity="1" />
+    <End Role="TypeOfService" Type="Modelll.Store.TypeOfServiceSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TypeOfPrice">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="TypeOfService">
+        <PropertyRef Name="TypeOfPrice_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="Modelll" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+        <EntityContainer Name="ModelllContainer" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="VisitSet" EntityType="Modelll.Visit" />
+          <EntitySet Name="ServiceSet" EntityType="Modelll.Service" />
+          <EntitySet Name="TypeOfRoomSet" EntityType="Modelll.TypeOfRoom" />
+          <EntitySet Name="RoomSet" EntityType="Modelll.Room" />
+          <EntitySet Name="JobSet" EntityType="Modelll.Job" />
+          <EntitySet Name="TypeOfServiceSet" EntityType="Modelll.TypeOfService" />
+          <EntitySet Name="TypeOfPriceSet" EntityType="Modelll.TypeOfPrice" />
+          <EntitySet Name="ClientSet" EntityType="Modelll.Client" />
+          <EntitySet Name="EmployeeSet" EntityType="Modelll.Employee" />
+          <AssociationSet Name="TypeOfRoomRoom" Association="Modelll.TypeOfRoomRoom">
+            <End Role="TypeOfRoom" EntitySet="TypeOfRoomSet" />
+            <End Role="Room" EntitySet="RoomSet" />
+          </AssociationSet>
+          <AssociationSet Name="RoomVisit" Association="Modelll.RoomVisit">
+            <End Role="Room" EntitySet="RoomSet" />
+            <End Role="Visit" EntitySet="VisitSet" />
+          </AssociationSet>
+          <AssociationSet Name="ClientVisit" Association="Modelll.ClientVisit">
+            <End Role="Client" EntitySet="ClientSet" />
+            <End Role="Visit" EntitySet="VisitSet" />
+          </AssociationSet>
+          <AssociationSet Name="ClientService" Association="Modelll.ClientService">
+            <End Role="Client" EntitySet="ClientSet" />
+            <End Role="Service" EntitySet="ServiceSet" />
+          </AssociationSet>
+          <AssociationSet Name="EmployeeService" Association="Modelll.EmployeeService">
+            <End Role="Employee" EntitySet="EmployeeSet" />
+            <End Role="Service" EntitySet="ServiceSet" />
+          </AssociationSet>
+          <AssociationSet Name="TypeOfServiceEmployee" Association="Modelll.TypeOfServiceEmployee">
+            <End Role="TypeOfService" EntitySet="TypeOfServiceSet" />
+            <End Role="Employee" EntitySet="EmployeeSet" />
+          </AssociationSet>
+          <AssociationSet Name="JobEmployee" Association="Modelll.JobEmployee">
+            <End Role="Job" EntitySet="JobSet" />
+            <End Role="Employee" EntitySet="EmployeeSet" />
+          </AssociationSet>
+          <AssociationSet Name="TypeOfPriceTypeOfService" Association="Modelll.TypeOfPriceTypeOfService">
+            <End Role="TypeOfPrice" EntitySet="TypeOfPriceSet" />
+            <End Role="TypeOfService" EntitySet="TypeOfServiceSet" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Client">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <Property Name="DateBirth" Type="DateTime" Nullable="false" />
+          <Property Name="Sex" Type="String" Nullable="false" />
+          <Property Name="Password" Type="String" Nullable="false" />
+          <Property Name="Passport" Type="String" Nullable="false" />
+          <NavigationProperty Name="Visit" Relationship="Modelll.ClientVisit" FromRole="Client" ToRole="Visit" />
+          <NavigationProperty Name="Service" Relationship="Modelll.ClientService" FromRole="Client" ToRole="Service" />
+        </EntityType>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <Property Name="DateBirth" Type="DateTime" Nullable="false" />
+          <Property Name="Sex" Type="String" Nullable="false" />
+          <Property Name="Password" Type="String" Nullable="false" />
+          <Property Name="Passport" Type="String" Nullable="false" />
+          <NavigationProperty Name="Service" Relationship="Modelll.EmployeeService" FromRole="Employee" ToRole="Service" />
+          <NavigationProperty Name="TypeOfService" Relationship="Modelll.TypeOfServiceEmployee" FromRole="Employee" ToRole="TypeOfService" />
+          <NavigationProperty Name="Job" Relationship="Modelll.JobEmployee" FromRole="Employee" ToRole="Job" />
+        </EntityType>
+        <EntityType Name="Visit">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstDate" Type="DateTime" Nullable="false" />
+          <Property Name="SecondDate" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="Room" Relationship="Modelll.RoomVisit" FromRole="Visit" ToRole="Room" />
+          <NavigationProperty Name="Client" Relationship="Modelll.ClientVisit" FromRole="Visit" ToRole="Client" />
+        </EntityType>
+        <EntityType Name="Service">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Date" Type="DateTime" Nullable="false" />
+          <Property Name="NumberOfPeople" Type="Int32" Nullable="false" />
+          <Property Name="NumberOfHours" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Client" Relationship="Modelll.ClientService" FromRole="Service" ToRole="Client" />
+          <NavigationProperty Name="Employee" Relationship="Modelll.EmployeeService" FromRole="Service" ToRole="Employee" />
+        </EntityType>
+        <EntityType Name="TypeOfRoom">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Type" Type="String" Nullable="false" />
+          <Property Name="Capacity" Type="Int32" Nullable="false" />
+          <Property Name="Price" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Room" Relationship="Modelll.TypeOfRoomRoom" FromRole="TypeOfRoom" ToRole="Room" />
+        </EntityType>
+        <EntityType Name="Room">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Number" Type="String" Nullable="false" />
+          <NavigationProperty Name="TypeOfRoom" Relationship="Modelll.TypeOfRoomRoom" FromRole="Room" ToRole="TypeOfRoom" />
+          <NavigationProperty Name="Visit" Relationship="Modelll.RoomVisit" FromRole="Room" ToRole="Visit" />
+        </EntityType>
+        <EntityType Name="Job">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="JobName" Type="String" Nullable="false" />
+          <NavigationProperty Name="Employee" Relationship="Modelll.JobEmployee" FromRole="Job" ToRole="Employee" />
+        </EntityType>
+        <EntityType Name="TypeOfService">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <Property Name="Price" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Employee" Relationship="Modelll.TypeOfServiceEmployee" FromRole="TypeOfService" ToRole="Employee" />
+          <NavigationProperty Name="TypeOfPrice" Relationship="Modelll.TypeOfPriceTypeOfService" FromRole="TypeOfService" ToRole="TypeOfPrice" />
+        </EntityType>
+        <EntityType Name="TypeOfPrice">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Type" Type="String" Nullable="false" />
+          <NavigationProperty Name="TypeOfService" Relationship="Modelll.TypeOfPriceTypeOfService" FromRole="TypeOfPrice" ToRole="TypeOfService" />
+        </EntityType>
+        <Association Name="TypeOfRoomRoom">
+          <End Type="Modelll.TypeOfRoom" Role="TypeOfRoom" Multiplicity="1" />
+          <End Type="Modelll.Room" Role="Room" Multiplicity="*" />
+        </Association>
+        <Association Name="RoomVisit">
+          <End Type="Modelll.Room" Role="Room" Multiplicity="1" />
+          <End Type="Modelll.Visit" Role="Visit" Multiplicity="*" />
+        </Association>
+        <Association Name="ClientVisit">
+          <End Type="Modelll.Client" Role="Client" Multiplicity="1" />
+          <End Type="Modelll.Visit" Role="Visit" Multiplicity="*" />
+        </Association>
+        <Association Name="ClientService">
+          <End Type="Modelll.Client" Role="Client" Multiplicity="1" />
+          <End Type="Modelll.Service" Role="Service" Multiplicity="*" />
+        </Association>
+        <Association Name="EmployeeService">
+          <End Type="Modelll.Employee" Role="Employee" Multiplicity="1" />
+          <End Type="Modelll.Service" Role="Service" Multiplicity="*" />
+        </Association>
+        <Association Name="TypeOfServiceEmployee">
+          <End Type="Modelll.TypeOfService" Role="TypeOfService" Multiplicity="1" />
+          <End Type="Modelll.Employee" Role="Employee" Multiplicity="*" />
+        </Association>
+        <Association Name="JobEmployee">
+          <End Type="Modelll.Job" Role="Job" Multiplicity="1" />
+          <End Type="Modelll.Employee" Role="Employee" Multiplicity="*" />
+        </Association>
+        <Association Name="TypeOfPriceTypeOfService">
+          <End Type="Modelll.TypeOfPrice" Role="TypeOfPrice" Multiplicity="1" />
+          <End Type="Modelll.TypeOfService" Role="TypeOfService" Multiplicity="*" />
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ModelllStoreContainer" CdmEntityContainer="ModelllContainer">
+    <EntitySetMapping Name="VisitSet">
+      <EntityTypeMapping TypeName="IsTypeOf(Modelll.Visit)">
+        <MappingFragment StoreEntitySet="VisitSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="FirstDate" ColumnName="FirstDate" />
+          <ScalarProperty Name="SecondDate" ColumnName="SecondDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ServiceSet">
+      <EntityTypeMapping TypeName="IsTypeOf(Modelll.Service)">
+        <MappingFragment StoreEntitySet="ServiceSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="NumberOfPeople" ColumnName="NumberOfPeople" />
+          <ScalarProperty Name="NumberOfHours" ColumnName="NumberOfHours" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TypeOfRoomSet">
+      <EntityTypeMapping TypeName="IsTypeOf(Modelll.TypeOfRoom)">
+        <MappingFragment StoreEntitySet="TypeOfRoomSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="Capacity" ColumnName="Capacity" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RoomSet">
+      <EntityTypeMapping TypeName="IsTypeOf(Modelll.Room)">
+        <MappingFragment StoreEntitySet="RoomSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Number" ColumnName="Number" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="JobSet">
+      <EntityTypeMapping TypeName="IsTypeOf(Modelll.Job)">
+        <MappingFragment StoreEntitySet="JobSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="JobName" ColumnName="JobName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TypeOfServiceSet">
+      <EntityTypeMapping TypeName="IsTypeOf(Modelll.TypeOfService)">
+        <MappingFragment StoreEntitySet="TypeOfServiceSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TypeOfPriceSet">
+      <EntityTypeMapping TypeName="IsTypeOf(Modelll.TypeOfPrice)">
+        <MappingFragment StoreEntitySet="TypeOfPriceSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ClientSet">
+      <EntityTypeMapping TypeName="IsTypeOf(Modelll.Client)">
+        <MappingFragment StoreEntitySet="ClientSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="DateBirth" ColumnName="DateBirth" />
+          <ScalarProperty Name="Sex" ColumnName="Sex" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Passport" ColumnName="Passport" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EmployeeSet">
+      <EntityTypeMapping TypeName="IsTypeOf(Modelll.Employee)">
+        <MappingFragment StoreEntitySet="EmployeeSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="DateBirth" ColumnName="DateBirth" />
+          <ScalarProperty Name="Sex" ColumnName="Sex" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Passport" ColumnName="Passport" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="TypeOfRoomRoom" TypeName="Modelll.TypeOfRoomRoom" StoreEntitySet="RoomSet">
+      <EndProperty Name="TypeOfRoom">
+        <ScalarProperty Name="Id" ColumnName="TypeOfRoom_Id" />
+      </EndProperty>
+      <EndProperty Name="Room">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="RoomVisit" TypeName="Modelll.RoomVisit" StoreEntitySet="VisitSet">
+      <EndProperty Name="Room">
+        <ScalarProperty Name="Id" ColumnName="Room_Id" />
+      </EndProperty>
+      <EndProperty Name="Visit">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="ClientVisit" TypeName="Modelll.ClientVisit" StoreEntitySet="VisitSet">
+      <EndProperty Name="Client">
+        <ScalarProperty Name="Id" ColumnName="Client_Id" />
+      </EndProperty>
+      <EndProperty Name="Visit">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="ClientService" TypeName="Modelll.ClientService" StoreEntitySet="ServiceSet">
+      <EndProperty Name="Client">
+        <ScalarProperty Name="Id" ColumnName="Client_Id" />
+      </EndProperty>
+      <EndProperty Name="Service">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="EmployeeService" TypeName="Modelll.EmployeeService" StoreEntitySet="ServiceSet">
+      <EndProperty Name="Employee">
+        <ScalarProperty Name="Id" ColumnName="Employee_Id" />
+      </EndProperty>
+      <EndProperty Name="Service">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="TypeOfServiceEmployee" TypeName="Modelll.TypeOfServiceEmployee" StoreEntitySet="EmployeeSet">
+      <EndProperty Name="TypeOfService">
+        <ScalarProperty Name="Id" ColumnName="TypeOfService_Id" />
+      </EndProperty>
+      <EndProperty Name="Employee">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="JobEmployee" TypeName="Modelll.JobEmployee" StoreEntitySet="EmployeeSet">
+      <EndProperty Name="Job">
+        <ScalarProperty Name="Id" ColumnName="Job_Id" />
+      </EndProperty>
+      <EndProperty Name="Employee">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="TypeOfPriceTypeOfService" TypeName="Modelll.TypeOfPriceTypeOfService" StoreEntitySet="TypeOfServiceSet">
+      <EndProperty Name="TypeOfPrice">
+        <ScalarProperty Name="Id" ColumnName="TypeOfPrice_Id" />
+      </EndProperty>
+      <EndProperty Name="TypeOfService">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+        <DesignerProperty Name="UseLegacyProvider" Value="False" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

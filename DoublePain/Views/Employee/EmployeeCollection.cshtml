@@ -1,0 +1,54 @@
+﻿@model DoublePain.Employee
+
+<h2>Список сотрудников</h2>
+@Html.ActionLink("Добавить сотрудника", "Add")
+<br />
+
+<table>
+    <tr>
+        <td>ФИО</td>
+        <td>Дата Рождения</td>
+        <td>Пол</td>
+        <td>Паспорт</td>
+        <td>Должность</td>
+        <td>Тип предоставляемых услуг</td>
+    </tr>
+    @foreach (Employee c in (IEnumerable<Employee>)ViewData["Employees"])
+    {
+        <tr>
+            <td>@c.Name</td>
+            <td>@c.DateBirth</td>
+            <td>@c.Sex</td>
+            <td>@c.Passport</td>
+            <td>@c.Job.JobName</td>
+            <td>@c.TypeOfService.Name</td>
+            <td>@Html.ActionLink("Открыть", "EmployeeInfo", new { id = c.Id })</td>
+        </tr>
+    }
+</table>
+
+@*@if (ViewData["TypeOfRooms"] == null)
+{
+
+}
+else
+{
+
+}
+
+<div class="form-group">
+    <div>
+        <row>
+            <div class="col-md-6">
+
+
+
+            </div>
+            <div class="col-md-6">
+
+
+
+            </div>
+            <row>
+    </div>
+</div>*@
